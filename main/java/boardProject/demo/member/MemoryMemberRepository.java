@@ -6,7 +6,7 @@ import java.util.Map;
 public class MemoryMemberRepository implements MemberRepository{
     private static Map<Long, Member> storage = new HashMap<>();
     @Override
-    public void save(Member member) {
+    public void add(Member member) {
         storage.put(member.getId(), member);
     }
 

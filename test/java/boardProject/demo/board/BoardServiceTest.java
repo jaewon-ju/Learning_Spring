@@ -1,5 +1,6 @@
 package boardProject.demo.board;
 
+import boardProject.demo.AppConfig;
 import boardProject.demo.member.Member;
 import boardProject.demo.member.MemberService;
 import boardProject.demo.member.MemberServiceImpl;
@@ -12,8 +13,9 @@ import org.junit.jupiter.api.Test;
 
 
 class BoardServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    BoardService boardService = new BoardServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService memberService = appConfig.memberService();
+    BoardService boardService = appConfig.boardService();
 
 
     @Test

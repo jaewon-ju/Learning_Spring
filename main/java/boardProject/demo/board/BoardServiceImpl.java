@@ -6,8 +6,14 @@ import boardProject.demo.member.MemoryMemberRepository;
 import boardProject.demo.member.Position;
 
 public class BoardServiceImpl implements BoardService{
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private final BoardPolicy boardPolicy = new ReadOnly();
+
+    private final MemberRepository memberRepository;
+    private final BoardPolicy boardPolicy;
+
+    public BoardServiceImpl(MemberRepository memberRepository, BoardPolicy boardPolicy) {
+        this.memberRepository = memberRepository;
+        this.boardPolicy = boardPolicy;
+    }
 
     @Override
     public Post posting(Long id, Position position, String title, String content) {
