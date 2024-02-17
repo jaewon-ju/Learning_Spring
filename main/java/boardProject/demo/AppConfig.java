@@ -23,9 +23,7 @@ public class AppConfig {
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
-    public BoardPolicy boardPolicy(){
-        return new ReadOnly();
-    }
+    public BoardPolicy boardPolicy(){ return new ReadOnly(); }
     @Bean
     public BoardService boardService(){
         return new BoardServiceImpl(memberRepository(), boardPolicy());
