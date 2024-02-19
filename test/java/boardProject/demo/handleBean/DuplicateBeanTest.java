@@ -1,10 +1,7 @@
 package boardProject.demo.handleBean;
 
-import boardProject.demo.AppConfig;
 import boardProject.demo.board.BoardPolicy;
-import boardProject.demo.board.ReadOnly;
-import boardProject.demo.member.MemberService;
-import boardProject.demo.member.MemberServiceImpl;
+import boardProject.demo.board.ReadOnlyPolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,12 +19,12 @@ public class DuplicateBeanTest {
     static class SameTypeBeanConfig{
         @Bean
         public BoardPolicy boardPolicy1(){
-            return new ReadOnly();
+            return new ReadOnlyPolicy();
         }
 
         @Bean
         public BoardPolicy boardPolicy2(){
-            return new ReadOnly();
+            return new ReadOnlyPolicy();
         }
     }
 
@@ -45,7 +42,7 @@ public class DuplicateBeanTest {
     @DisplayName("Find Bean By Name & Type")
     void findBeanByTypeSpecific(){
         Object boardPolicy = ac.getBean("boardPolicy1", BoardPolicy.class);
-        org.assertj.core.api.Assertions.assertThat(boardPolicy).isInstanceOf(ReadOnly.class);
+        org.assertj.core.api.Assertions.assertThat(boardPolicy).isInstanceOf(ReadOnlyPolicy.class);
     }
 
     // 특정 타입의 빈을 모두 출력하고 싶다면, getBeansOfType()을 사용하면 된다.

@@ -1,8 +1,8 @@
 package boardProject.demo.handleBean;
 
 import boardProject.demo.board.BoardPolicy;
-import boardProject.demo.board.ReadOnly;
-import boardProject.demo.board.ReadWrite;
+import boardProject.demo.board.ReadOnlyPolicy;
+import boardProject.demo.board.ReadWritePolicy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,12 +23,12 @@ public class ParentBeanTest {
     static class InheritBeanTest{
         @Bean
         public BoardPolicy boardPolicy1(){
-            return new ReadOnly();
+            return new ReadOnlyPolicy();
         }
 
         @Bean
         public BoardPolicy boardPolicy2(){
-            return new ReadWrite();
+            return new ReadWritePolicy();
         }
     }
 
@@ -42,15 +42,15 @@ public class ParentBeanTest {
     @DisplayName("부모 타입으로 조회할 때, 자식이 둘 이상 있으면 자식의 이름을 사용하면 된다.")
     void findBeanByParentTypeAndChildName(){
         BoardPolicy boardPolicy = ac.getBean("boardPolicy1",BoardPolicy.class);
-        assertThat(boardPolicy).isInstanceOf(ReadOnly.class);
+        assertThat(boardPolicy).isInstanceOf(ReadOnlyPolicy.class);
     }
     // 빈의 타입은 리턴 타입이 아니라, 실제 객체의 타입이다?
 
     @Test
     @DisplayName("특정 하위 타입으로 조회하면, 중복 오류를 막을 수 있다. 하지만, 권장되지 않음")
     void findChildBeanByType(){
-        BoardPolicy boardPolicy = ac.getBean(ReadOnly.class);
-        assertThat(boardPolicy).isInstanceOf(ReadOnly.class);
+        BoardPolicy boardPolicy = ac.getBean(ReadOnlyPolicy.class);
+        assertThat(boardPolicy).isInstanceOf(ReadOnlyPolicy.class);
     }
 
     @Test

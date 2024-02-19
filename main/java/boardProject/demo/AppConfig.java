@@ -3,7 +3,7 @@ package boardProject.demo;
 import boardProject.demo.board.BoardPolicy;
 import boardProject.demo.board.BoardService;
 import boardProject.demo.board.BoardServiceImpl;
-import boardProject.demo.board.ReadOnly;
+import boardProject.demo.board.ReadOnlyPolicy;
 import boardProject.demo.member.MemberRepository;
 import boardProject.demo.member.MemberService;
 import boardProject.demo.member.MemberServiceImpl;
@@ -23,7 +23,7 @@ public class AppConfig {
         return new MemberServiceImpl(memberRepository());
     }
     @Bean
-    public BoardPolicy boardPolicy(){ return new ReadOnly(); }
+    public BoardPolicy boardPolicy(){ return new ReadOnlyPolicy(); }
     @Bean
     public BoardService boardService(){
         return new BoardServiceImpl(memberRepository(), boardPolicy());

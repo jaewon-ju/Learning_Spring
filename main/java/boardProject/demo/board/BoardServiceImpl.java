@@ -4,16 +4,22 @@ import boardProject.demo.member.Member;
 import boardProject.demo.member.MemberRepository;
 import boardProject.demo.member.MemoryMemberRepository;
 import boardProject.demo.member.Position;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BoardServiceImpl implements BoardService{
 
     private final MemberRepository memberRepository;
     private final BoardPolicy boardPolicy;
 
+
+    @Autowired // 생략가능
     public BoardServiceImpl(MemberRepository memberRepository, BoardPolicy boardPolicy) {
         this.memberRepository = memberRepository;
         this.boardPolicy = boardPolicy;
     }
+
 
     @Override
     public Post posting(Long id, Position position, String title, String content) {

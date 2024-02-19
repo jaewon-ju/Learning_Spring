@@ -25,7 +25,7 @@ class StatefulSingletonTest {
         user2.setTime("user2",50);
 
         System.out.println(user1.getTime());
-        Assertions.assertThat(user1.getTime()).isEqualTo(100);
+        Assertions.assertThat(user1.getTime()).isEqualTo(50);
     }
     @Configuration
     static class TestConfig {

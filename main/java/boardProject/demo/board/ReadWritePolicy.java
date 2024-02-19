@@ -1,8 +1,10 @@
 package boardProject.demo.board;
 
 import boardProject.demo.member.Member;
+import org.springframework.stereotype.Component;
 
-public class ReadWrite implements BoardPolicy{
+@Component
+public class ReadWritePolicy implements BoardPolicy{
 
     @Override
     public boolean returnAuthority(Member member) {
